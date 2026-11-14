@@ -35,11 +35,6 @@
     line-height: 0.9;
   }
 
-  .masthead p {
-    max-width: 46ch;
-    font: 12px/1.6 var(--mono);
-  }
-
   [data-slot="segmented-control"] {
     gap: 18px;
     font: 12px/1.4 var(--mono);
@@ -551,20 +546,6 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #4d453c;
-  }
-
-  .about {
-    font: 12px/1.6 var(--mono);
-  }
-
-  .about h2 {
-    font: 700 22px/1.1 "Helvetica Neue", Helvetica, Arial, sans-serif;
-    letter-spacing: -0.04em;
-  }
-
-  .about section {
-    padding-top: 12px;
-    border-top: 3px solid var(--ink);
   }
 
   .window {

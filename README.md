@@ -26,7 +26,7 @@ The first four show that the past can be rebuilt. The fifth is the point: the sa
 
 Switching era changes one attribute, `data-era`, on the page. Nothing else.
 
-- **Markup.** The page hashes the player's DOM before and after each switch and prints both at the bottom. They match: the same 318 elements in every era. A test asserts it.
+- **Markup.** The player's DOM is the same 318 elements in every era. A test hashes it in all five and asserts the hashes match.
 - **Keyboard.** The same 33 tab stops in every era. Arrow keys move inside the menu bar, the transport and the playlist. Sliders take arrows, Page Up and Down, Home and End. Closing a window hands focus back to the button that reopens it.
 - **Accessibility.** Every control has a name. Sliders report readable values such as `0:42`, `5% left` and `+3 dB`. Track changes are announced.
 - **Agents.** The same controls are exposed through UI SDK's agent bridge, so an agent can operate the player by name instead of clicking pixels. Try it in the browser console on the demo:
@@ -55,7 +55,16 @@ It is a real player, not a picture of one.
 
 - **Behaviors:** `@ui-sdk/react` Menubar, Menu, Toolbar, Toggle, Slider (14 of them), Listbox, Dialog, Button and Segmented Control, plus its shortcuts hook and agent bridge.
 - **Skins:** one stylesheet per era in [src/styles/](src/styles/), roughly 500 to 1,020 lines each. No images, no icon fonts, no web fonts. Icons and the seven-segment digits are inline SVG, and the visualizer is a canvas that takes its colors and drawing style from CSS variables the skin sets.
-- **Audio:** Web Audio. The five tracks are synthesised in the browser by [src/audio/synth.ts](src/audio/synth.ts), so the repo holds no audio files. The equalizer is ten real filters.
+- **Audio:** Web Audio. The equalizer is ten real filters.
+- **Music:** five original instrumentals in the styles of the period, written as code in [src/audio/synth.ts](src/audio/synth.ts) and synthesised in the browser in about a second each. The repo holds no audio files and no samples.
+
+| Track | Style |
+| --- | --- |
+| Corner Store Cipher | 1994 boom bap: swung drums, dusty electric piano, vinyl crackle |
+| Six-Four Sunday | 1993 G-funk: a sliding sine lead over a fat synth bass |
+| Two-Way Pager | 2001 club rap: a dry syncopated beat, hard stabs, a plucked riff |
+| Candy Paint | 2004 crunk: a tuned 808, rolling hats, brass hits |
+| Rewind Selecta | 1999 UK garage: a two-step beat, organ bass, chopped chords |
 - **Author:** a coding agent (Claude Code) wrote the code from a short brief and a few rounds of feedback.
 
 One limit on the experiment: everything here is composed from components the SDK already ships. UI SDK also lets you define new primitives of your own with `@ui-sdk/core`, and this project does not do that yet. It is the obvious next step.

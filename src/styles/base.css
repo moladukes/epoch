@@ -80,9 +80,6 @@ body {
 }
 
 .masthead h1,
-.masthead p,
-.about h2,
-.about p,
 .wordmark {
   margin: 0;
 }
@@ -643,21 +640,6 @@ body {
 [data-slot="menu-shortcut"] {
   margin-inline-start: auto;
   padding-inline-start: 24px;
-}
-
-/* About */
-
-.about {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px 32px;
-  width: min(720px, 100%);
-}
-
-.about section {
-  display: grid;
-  gap: 6px;
-  align-content: start;
 }
 
 @media (prefers-reduced-motion: no-preference) {

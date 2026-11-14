@@ -51,10 +51,6 @@
     text-shadow: 2px 2px 0 #000;
   }
 
-  .masthead p {
-    font-size: 12px;
-  }
-
   [data-slot="segmented-control"] {
     gap: 3px;
     padding: 3px;
@@ -447,16 +443,6 @@
   [data-slot="menu-group-label"] {
     padding: 3px 8px 1px;
     color: #404040;
-  }
-
-  .about section {
-    padding: 10px 12px;
-    background: var(--face);
-    box-shadow: var(--raised);
-  }
-
-  .about h2 {
-    font: bold 11px/1.4 "MS Sans Serif", Tahoma, sans-serif;
   }
 
   .window-close {

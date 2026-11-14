@@ -58,10 +58,6 @@
     text-shadow: 0 1px 0 #fff;
   }
 
-  .masthead p {
-    color: #2c3d55;
-  }
-
   [data-slot="segmented-control"] {
     padding: 3px;
     border-radius: 999px;
@@ -806,25 +802,6 @@
 
   [data-slot="menu-shortcut"] {
     font-size: 10px;
-  }
-
-  .about section {
-    padding: 12px 14px;
-    border: 1px solid rgb(85 96 110 / 0.45);
-    border-radius: 10px;
-    background: rgb(255 255 255 / 0.5);
-    box-shadow: inset 0 1px 0 #fff;
-  }
-
-  .about h2 {
-    font: bold 11px/1.3 Tahoma, sans-serif;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #0d3ea6;
-  }
-
-  .about p {
-    line-height: 1.5;
   }
 
   .controls {

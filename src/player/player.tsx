@@ -31,7 +31,6 @@ import { KINDS } from "./visualizer"
 type Props = {
   era: string
   onEraChange: (era: string) => void
-  onAbout: () => void
 }
 
 const balanceText = (value: number) =>
@@ -50,7 +49,7 @@ function Shortcut(props: {
   return null
 }
 
-function Player({ era, onEraChange, onAbout }: Props) {
+function Player({ era, onEraChange }: Props) {
   const engine = useEngine()
   const status = usePlayer((state) => state.status)
   const position = usePlayer((state) => state.position)
@@ -200,7 +199,6 @@ function Player({ era, onEraChange, onAbout }: Props) {
           hotkeys={hotkeys}
           onHotkeysChange={setHotkeys}
           onAddFiles={() => files.current?.click()}
-          onAbout={onAbout}
         />
 
         <Display

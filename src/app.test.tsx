@@ -42,7 +42,6 @@ test("every era renders the same player markup", async () => {
   }
 
   expect(seen.size).toBe(1)
-  expect(screen.getByRole("status").textContent).toMatch(/Identical across/)
 })
 
 test("the transport buttons and toggles drive the engine", async () => {
@@ -58,7 +57,7 @@ test("the transport buttons and toggles drive the engine", async () => {
   await user.click(transport.getByRole("button", { name: "Pause" }))
   expect(engine.getState().status).toBe("paused")
   await user.click(transport.getByRole("button", { name: "Next track" }))
-  expect(engine.getState().current).toBe("brushed-aluminium")
+  expect(engine.getState().current).toBe("six-four-sunday")
   await user.click(transport.getByRole("button", { name: "Stop" }))
   expect(engine.getState().status).toBe("stopped")
 
@@ -171,18 +170,18 @@ test("the equalizer and playlist windows open, close and edit the list", async (
 
   await user.click(screen.getByRole("button", { name: "Sort playlist" }))
   await user.click(screen.getByRole("menuitem", { name: "Sort by title" }))
-  expect(engine.getState().tracks[0]!.id).toBe("bend-the-curve")
+  expect(engine.getState().tracks[0]!.id).toBe("candy-paint")
   await user.click(screen.getByRole("button", { name: "Sort playlist" }))
   await user.click(screen.getByRole("menuitem", { name: "Move track down" }))
-  expect(engine.getState().tracks[3]!.id).toBe("dial-up-sunrise")
+  expect(engine.getState().tracks[2]!.id).toBe("corner-store-cipher")
   await user.click(screen.getByRole("button", { name: "Playlist options" }))
   await user.click(screen.getByRole("menuitem", { name: "Reset playlist" }))
   expect(engine.getState().tracks.map((track) => track.id)).toEqual([
-    "dial-up-sunrise",
-    "brushed-aluminium",
-    "glass-dock",
-    "flat-white",
-    "bend-the-curve",
+    "corner-store-cipher",
+    "six-four-sunday",
+    "two-way-pager",
+    "candy-paint",
+    "rewind-selecta",
   ])
 
   const list = screen.getByRole("listbox", { name: "Playlist" })
@@ -192,17 +191,17 @@ test("the equalizer and playlist windows open, close and edit the list", async (
 
   options[0]!.focus()
   await user.keyboard("{ArrowDown}{ArrowDown}")
-  expect(engine.getState().current).toBe("dial-up-sunrise")
+  expect(engine.getState().current).toBe("corner-store-cipher")
   await user.keyboard("{Enter}")
-  expect(engine.getState().current).toBe("glass-dock")
+  expect(engine.getState().current).toBe("two-way-pager")
   expect(engine.getState().status).toBe("playing")
   expect(screen.getByText("Track 3 of 5")).toBeTruthy()
 
   await user.click(screen.getByRole("button", { name: "Remove track" }))
   expect(engine.getState().tracks.map((track) => track.id)).not.toContain(
-    "glass-dock"
+    "two-way-pager"
   )
-  expect(engine.getState().current).toBe("flat-white")
+  expect(engine.getState().current).toBe("candy-paint")
   expect(engine.getState().status).toBe("playing")
 
   const toggle = screen.getByRole("button", { name: "Playlist window" })
@@ -227,7 +226,7 @@ test("the equalizer and playlist windows open, close and edit the list", async (
   const time = screen.getByRole("button", { name: "Time elapsed" })
   await user.click(time)
   expect(screen.getByRole("button", { name: "Time remaining" })).toBeTruthy()
-  expect(time.textContent).toMatch(/^-0:/)
+  expect(time.textContent).toMatch(/^-\d:\d\d/)
 })
 
 test("single-key shortcuts work and can be switched off", async () => {
@@ -237,7 +236,7 @@ test("single-key shortcuts work and can be switched off", async () => {
   await user.keyboard("k")
   expect(engine.getState().status).toBe("playing")
   await user.keyboard("]")
-  expect(engine.getState().current).toBe("brushed-aluminium")
+  expect(engine.getState().current).toBe("six-four-sunday")
   await user.keyboard("5")
   expect(page.dataset.era).toBe("next")
 
@@ -282,10 +281,10 @@ test("mute, the visualizer and auto presets are wired", async () => {
   const auto = screen.getByRole("button", { name: "Auto" })
   await user.click(auto)
   expect(auto.getAttribute("aria-pressed")).toBe("true")
-  expect(engine.getState().preset).toBe("Lo-fi")
-  await user.click(screen.getByRole("button", { name: "Next track" }))
   expect(engine.getState().preset).toBe("Loudness")
-  expect(engine.getState().bands[0]).toBe(7)
+  await user.click(screen.getByRole("button", { name: "Next track" }))
+  expect(engine.getState().preset).toBe("Bass boost")
+  expect(engine.getState().bands[0]).toBe(8)
 })
 
 test("an agent can find and operate every control", async () => {
@@ -371,11 +370,11 @@ test("an agent can find and operate every control", async () => {
     .snapshot()
     .find((entry) => entry.label === "Playlist" && !entry.offPage)
   const items = (playlist?.items ?? []) as { value: string; label: string }[]
-  const track = items.find((item) => item.label.includes("Flat White"))
-  expect(track, "Flat White is missing from the playlist's items").toBeTruthy()
+  const track = items.find((item) => item.label.includes("Candy Paint"))
+  expect(track, "Candy Paint is missing from the playlist's items").toBeTruthy()
   const pick = await agent.act({
     steps: [{ ref: "Playlist", action: "setValue", args: [track!.value] }],
   })
   expect(pick.ok, pick.error?.message).toBe(true)
-  expect(engine.getState().current).toBe("flat-white")
+  expect(engine.getState().current).toBe("candy-paint")
 })

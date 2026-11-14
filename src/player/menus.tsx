@@ -35,7 +35,6 @@ type Props = {
   hotkeys: boolean
   onHotkeysChange: (hotkeys: boolean) => void
   onAddFiles: () => void
-  onAbout: () => void
 }
 
 function PlayerMenubar(props: Props) {
@@ -211,7 +210,6 @@ function PlayerMenubar(props: Props) {
         <MenuTrigger>Help</MenuTrigger>
         <MenuContent>
           <MenuItem onSelect={props.onKeys}>Keyboard shortcuts</MenuItem>
-          <MenuItem onSelect={props.onAbout}>About this demo</MenuItem>
         </MenuContent>
       </Menu>
     </Menubar>

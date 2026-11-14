@@ -53,11 +53,6 @@
     line-height: 1.1;
   }
 
-  .masthead p,
-  .about p {
-    color: var(--muted);
-  }
-
   [data-slot="segmented-control"] {
     padding: 3px;
     border-radius: 10px;
@@ -432,15 +427,6 @@
   [data-slot="menu-shortcut"] {
     font-size: 12px;
     color: var(--muted);
-  }
-
-  .about h2 {
-    font-size: 13px;
-    font-weight: 600;
-  }
-
-  .about p {
-    font-size: 13px;
   }
 
   .window {

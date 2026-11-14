@@ -43,11 +43,11 @@ type Graph = {
 }
 
 const SONG_PRESETS: Record<string, string> = {
-  "dial-up-sunrise": "Lo-fi",
-  "brushed-aluminium": "Loudness",
-  "glass-dock": "Treble boost",
-  "flat-white": "Flat",
-  "bend-the-curve": "Bass boost",
+  "corner-store-cipher": "Loudness",
+  "six-four-sunday": "Bass boost",
+  "two-way-pager": "Vocal",
+  "candy-paint": "Flat",
+  "rewind-selecta": "Treble boost",
 }
 
 const clamp = (value: number, min: number, max: number) =>
@@ -59,9 +59,9 @@ function createEngine() {
     title: song.title,
     artist: song.artist,
     duration: Math.round(songDuration(song)),
-    kbps: 706,
+    kbps: 1411,
     khz: 44,
-    channels: 1,
+    channels: 2,
     preset: SONG_PRESETS[song.id],
   }))
 
