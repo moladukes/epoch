@@ -65,7 +65,6 @@ It is a real player, not a picture of one.
 | Two-Way Pager | 2001 club rap: a dry syncopated beat, hard stabs, a plucked riff |
 | Candy Paint | 2004 crunk: a tuned 808, rolling hats, brass hits |
 | Rewind Selecta | 1999 UK garage: a two-step beat, organ bass, chopped chords |
-- **Author:** a coding agent (Claude Code) wrote the code from a short brief and a few rounds of feedback.
 
 One limit on the experiment: everything here is composed from components the SDK already ships. UI SDK also lets you define new primitives of your own with `@ui-sdk/core`, and this project does not do that yet. It is the obvious next step.
 
